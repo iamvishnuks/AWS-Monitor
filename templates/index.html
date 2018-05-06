@@ -12,7 +12,7 @@
 
     <link rel="apple-touch-icon" href="apple-icon.png">
     <link rel="shortcut icon" href="favicon.ico">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/assets/css/normalize.css">
     <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../static/assets/css/font-awesome.min.css">
@@ -29,18 +29,40 @@
 
 </head>
 <body>
-
     <!-- Right Panel -->
 
     <div id="right-panel" class="right-panel">
 
 
         <!-- Header-->
+<!-- Header-->
+        <header id="header" class="header">
 
-        <div class="content mt-3">
+            <div class="header-menu">
+
+                <div class="col-sm-7">
+                 
+                    <div class="header-left">
+
+                        <div class="dropdown for-message">
+                          <img src="../static/images/aquavista_image.png" height="50%" width="50%">
+                          
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5">
+                   
 
 
-            <div class="col-lg-3 col-md-6">
+                </div>
+            </div>
+
+        </header><!-- /header -->
+        <!-- Header-->
+
+        <div class="mt-3">
+            <div class="col-lg-2 col-md-4 col-lg-offset-1 col-md-offset-1">
                 <div class="social-box twitter">
                     <i class=""><img src="../static/images/ec2.png" height="30%" width="30%"></img></i>
                     <ul>
@@ -58,7 +80,7 @@
             </div><!--/.col-->
 
 
-            <div class="col-lg-3 col-md-6">
+            <div class="col-lg-2 col-md-4">
                 <div class="social-box google-plus">
                     <i class=""><img src="../static/images/ec2.png" height="30%" width="30%"></img></i>
                     <ul>
@@ -75,8 +97,8 @@
                 <!--/social-box-->
             </div><!--/.col-->
 
-
-            <div class="col-lg-3 col-md-6">
+            <a href="" data-toggle="modal" data-target="#s3">
+            <div class="col-lg-2 col-md-4">
                 <div class="social-box twitter">
                     <i class=""><img src="../static/images/s3.png" height="30%" width="30%"></img></i>
                     <ul>
@@ -85,32 +107,125 @@
                             <span>S3 Buckets</span>
                         </li>
                         <li>
-                            <strong><span class="count">500</span></strong>
+                            <strong><span class="count">100</span></strong>
                             <span>Soft limit</span>
                         </li>
                     </ul>
                 </div>
                 <!--/social-box-->
             </div><!--/.col-->
-
-
-            <div class="col-lg-3 col-md-6">
+            </a>
+            <div id="s3" class="modal fade" role="dialog">
+                 <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>Bucket Name</th>
+                            </tr>
+                            </thead>
+                            <tbody id="s3details">
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="" data-toggle="modal" data-target="#rds">
+            <div class="col-lg-2 col-md-4">
                 <div class="social-box google-plus">
+                    <i class=""><img src="../static/images/rds.png" height="30%" width="30%" style="padding: 10px"></img></i>
+                    <ul>
+                        <li>
+                            <strong><span class="count">{{ rds_count }}</span></strong>
+                            <span>RDS</span>
+                        </li>
+                        <li>
+                            <strong><span class="count">100</span></strong>
+                            <span>Soft limit</span>
+                        </li>
+                    </ul>
+                </div>
+                <!--/social-box-->
+            </div><!--/.col-->
+            </a>
+            <div id="rds" class="modal fade" role="dialog">
+                 <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>RDS Name</th>
+                                <th>Engine</th>
+                                <th>Status</th>
+                                <th>Storage</th>
+                            </tr>
+                            </thead>
+                            <tbody id="rdsdetails">
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+              <a href="" data-toggle="modal" data-target="#elb">
+             <div class="col-lg-2 col-md-4">
+                <div class="social-box twitter">
                     <i class=""><img src="../static/images/elb.png" height="30%" width="30%" style="padding: 10px"></img></i>
                     <ul>
                         <li>
-                            <strong><span class="count">94</span></strong>
-                            <span>Load balancers</span>
+                            <strong><span class="count">{{ elb_count }}</span></strong>
+                            <span>ELB</span>
                         </li>
                         <li>
-                            <strong><span class="count">92</span></strong>
+                            <strong><span class="count">100</span></strong>
                             <span>Soft limit</span>
                         </li>
                     </ul>
                 </div>
                 <!--/social-box-->
-            </div><!--/.col-->
-
+             </div></a><!--/.col-->
+            <div id="elb" class="modal fade" role="dialog">
+                 <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                            <tr>
+                                <th>LB Name</th>
+                                <th>DNS</th>
+                                <th>State</th>
+                                <th>Type</th>
+                            </tr>
+                            </thead>
+                            <tbody id="elbdetails">
+                            </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
@@ -126,7 +241,8 @@
                     <thead>
                       <tr>
                         <th>Instance Name</th>
-                        <th>IP</th>
+                        <th>Public IP</th>
+                          <th>Instance state</th>
                         <th>CPU utilization</th>
                         <th>Disk reads</th>
                       </tr>
@@ -143,10 +259,7 @@
                 </div>
             </div>
 
-
-
-        </div> <!-- .content -->
-    </div><!-- /#right-panel -->
+         <!-- .content -->
 
     <!-- Right Panel -->
 
@@ -172,19 +285,118 @@
   setInterval(function() {
       $.ajax({
       type: "GET",
-      url: "/get_instances",
+      url: "/get_instances"
     })
       .success(function( instances ) {
           //ins=JSON.parse(instances);
           //console.log(instances[0].Instances[0].InstanceId);
           var ins="";
           for(var i in instances){
-            ins+="<tr> <td>"+ instances[i].Instances[0].InstanceId+ "</td><td>"+ instances[i].Instances[0].PublicIpAddress+"</td><td>"+
+            ins+="<tr> <td>"+ instances[i].Instances[0].InstanceId+ "</td><td>"+ instances[i].Instances[0].PublicIpAddress+"</td><td>"+ instances[i].Instances[0].State.Name+"</td><td>"+
                 instances[i].Instances[0].CPU_data+"</td><td>"+ instances[i].Instances[0].DiskReads+"</td></tr>";
           }
           $('#instancedetails').html(ins)
       });
-}, 3006 * 60);
+}, 300 * 60);
+
+  setInterval(function() {
+      $.ajax({
+      type: "GET",
+      url: "/elb"
+    })
+      .success(function( elbs ) {
+          var ins="";
+          for(var i in elbs.elbs){
+            ins += "<tr> <td>" +elbs.elbs[i].name + "</td><td>" + elbs.elbs[i].dns + "</td><td>" + elbs.elbs[i].state + "</td><td>" +
+                      elbs.elbs[i].type + "</td></tr>";
+          }
+          $('#elbdetails').html(ins)
+      });
+}, 300 * 60);
+
+   setInterval(function() {
+      $.ajax({
+      type: "GET",
+      url: "/rds"
+    })
+      .success(function( rds ) {
+          var ins="";
+          for(var i in rds.rds){
+            ins += "<tr> <td>" +rds.rds[i].name + "</td><td>" + rds.rds[i].engine + "</td><td>" + rds.rds[i].status + "</td><td>" +
+                      rds.rds[i].storage + "</td></tr>";
+          }
+          $('#rdsdetails').html(ins)
+      });
+}, 300 * 60);
+
+   setInterval(function() {
+      $.ajax({
+      type: "GET",
+      url: "/s3"
+    })
+      .success(function( s3 ) {
+          var ins="";
+          for(var i in s3.buckets){
+            ins += "<tr> <td>" +s3.buckets[i] + "</td></tr>";
+          }
+          $('#s3details').html(ins)
+      });
+}, 300 * 60);
+
+  $(document).ready(function() {
+      $.ajax({
+          type: "GET",
+          url: "/elb"
+      })
+          .success(function (elbs) {
+              var ins = "";
+              for (var i in elbs.elbs) {
+                  ins += "<tr> <td>" +elbs.elbs[i].name + "</td><td>" + elbs.elbs[i].dns + "</td><td>" + elbs.elbs[i].state + "</td><td>" +
+                      elbs.elbs[i].type + "</td></tr>";
+              }
+              $('#elbdetails').html(ins)
+          });
+    $.ajax({
+      type: "GET",
+      url: "/rds"
+    })
+      .success(function( rds ) {
+          var ins="";
+          for(var i in rds.rds){
+            ins += "<tr> <td>" +rds.rds[i].name + "</td><td>" + rds.rds[i].engine + "</td><td>" + rds.rds[i].status + "</td><td>" +
+                      rds.rds[i].storage + "</td></tr>";
+          }
+          $('#rdsdetails').html(ins)
+      });
+    $.ajax({
+      type: "GET",
+      url: "/s3"
+    })
+      .success(function( s3 ) {
+          var ins="";
+          console.log(s3.buckets[0])
+          for(var i in s3.buckets){
+            ins += "<tr> <td>" +s3.buckets[i]+ "</td></tr>";
+          }
+          $('#s3details').html(ins)
+      });
+    $.ajax({
+      type: "GET",
+      url: "/get_instances"
+    })
+      .success(function( instances ) {
+          //ins=JSON.parse(instances);
+          console.log(instances);
+          var ins="";
+          for(var i in instances){
+            ins+="<tr> <td>"+ instances[i].Instances[0].InstanceId+ "</td><td>"+ instances[i].Instances[0].PublicIpAddress+"</td><td>"+ instances[i].Instances[0].State.Name+"</td><td>"+
+                instances[i].Instances[0].CPU_data+"</td><td>"+ instances[i].Instances[0].DiskReads+"</td></tr>";
+          }
+          $('#instancedetails').html(ins)
+      });
+
+
+  });
     </script>
 
 </body>
