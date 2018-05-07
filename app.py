@@ -4,7 +4,7 @@ import datetime
 
 app = Flask(__name__)
 
-region = 'us-east-1'
+region = 'eu-west-1'
 con = boto3.client('ec2', region_name=region)
 
 cw = boto3.client('cloudwatch', region_name=region)
@@ -35,7 +35,8 @@ def get_rds_info():
             rds_data['storage'] = i['AllocatedStorage']
             rds_data['status'] = i['DBInstanceStatus']
             rds_data['name'] = i['DBInstanceIdentifier']
-            rds.append(rds_data)
+            rds.append({'engine':i['Engine'],'storage':i['AllocatedStorage'],'status':i['DBInstanceStatus'],'name':i['DBInstanceIdentifier']})
+            print rds
         return rds
     else:
         return rds
@@ -129,6 +130,12 @@ def get_instances():
             i['Instances'][0]['DiskReads'] = disk_read['Datapoints'][0]['Average']
         else:
             i['Instances'][0]['DiskReads'] = 0
+        iname =''
+        print i['Instances'][0]['Tags']
+        for j in i['Instances'][0]['Tags']:
+          if j['Key'] == 'Name':
+            iname = j['Value']
+        i['Instances'][0]['iname'] = iname
     return jsonify(instances)
 
 

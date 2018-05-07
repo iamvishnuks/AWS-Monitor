@@ -292,7 +292,7 @@
           //console.log(instances[0].Instances[0].InstanceId);
           var ins="";
           for(var i in instances){
-            ins+="<tr> <td>"+ instances[i].Instances[0].InstanceId+ "</td><td>"+ instances[i].Instances[0].PublicIpAddress+"</td><td>"+ instances[i].Instances[0].State.Name+"</td><td>"+
+            ins+="<tr> <td>"+ instances[i].Instances[0].iname+ "</td><td>"+ instances[i].Instances[0].PublicIpAddress+"</td><td>"+ instances[i].Instances[0].State.Name+"</td><td>"+
                 instances[i].Instances[0].CPU_data+"</td><td>"+ instances[i].Instances[0].DiskReads+"</td></tr>";
           }
           $('#instancedetails').html(ins)
@@ -389,7 +389,7 @@
           console.log(instances);
           var ins="";
           for(var i in instances){
-            ins+="<tr> <td>"+ instances[i].Instances[0].InstanceId+ "</td><td>"+ instances[i].Instances[0].PublicIpAddress+"</td><td>"+ instances[i].Instances[0].State.Name+"</td><td>"+
+            ins+="<tr> <td>"+ instances[i].Instances[0].iname+ "</td><td>"+ instances[i].Instances[0].PublicIpAddress+"</td><td>"+ instances[i].Instances[0].State.Name+"</td><td>"+
                 instances[i].Instances[0].CPU_data+"</td><td>"+ instances[i].Instances[0].DiskReads+"</td></tr>";
           }
           $('#instancedetails').html(ins)
